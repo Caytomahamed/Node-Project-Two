@@ -32,7 +32,7 @@
 
 `https://node-prject-3.herokuapp.com/api/posts/:id `
 
-### Get Post By ID 
+### Get Post By Users ID
 
 `https://node-prject-3.herokuapp.com/api/posts/:id/posts `
 
