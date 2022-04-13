@@ -7,7 +7,7 @@ const server = require('./api/server.js');
 
 //DYNAMIC PORT HEROKUE ENVIRONMENT  => NPM I dotenv
 
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 console.log(port);    
 
