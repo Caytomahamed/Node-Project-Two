@@ -20,7 +20,7 @@
 > - https://node-prject-3.herokuapp.com/api/users/:id
 ### Delete User By ID
 
-> - https://node-prject-3.herokuapp.com/api/users/:id
+> `https://node-prject-3.herokuapp.com/api/users/:id`
 
 ## Post Endpoints
 
