@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 
 //import post router vs //impoe user router
-const postRouter = require('./posts/post-router.js');
-const userRouter = require('./users/user-router.js');
+const postRouter = require("./posts/post-router.js");
+const userRouter = require("./users/user-router.js");
 
 const server = express();
 
@@ -14,10 +14,9 @@ server.use(express.json());
 server.use("/api/posts", postRouter);
 server.use("/api/users", userRouter);
 
-server.use("*", (req, res) => {     
-    // this is the catch all route for any other route that is not defined
-    res.status(404).json({ message: `${req.method} ${req.baseUrl} Not Found` });
-})
-
+server.use("*", (req, res) => {
+  // this is the catch all route for any other route that is not defined
+  res.status(404).json({ message: `${req.method} ${req.baseUrl} Not Found` });
+});
 
 module.exports = server;

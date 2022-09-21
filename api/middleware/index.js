@@ -1,32 +1,34 @@
-function validateUserId(req, res, next) {
-  //DO YOUR MAGIC
+const userdb = require("../users/user-model");
+
+const validateUserId = async (req, res, next) => {
   let { id } = req.params;
-  console.log(id);
-  if (!id) {
-    res.status(400).json({ message: "id is required" });
-  }
-  next();
-}
+  const user = await userdb.getById(id);
 
-function validateUser(req, res, next) {
+  if (!user) return res.status(400).json({ message: "id is required" });
+  req.user = user;
+  next();
+};
+
+const validateUser = async (req, res, next) => {
   // DO YOUR MAGIC
-  let {name} = req.body;
-  if (!name) {
-    res.status(400).json({ message: "name is required" });
-  }
+  let { name } = req.body;
+  if (!name)
+    return res.status(400).json({ message: "missing required name field" });
   next();
-}
+};
 
-function validatePost(req, res, next) {
+const validatePost = (req, res, next) => {
   // DO YOUR MAGIC
-  let {id} = req.params;
-  let {text, user_id} = req.body;
-  if (!text || !user_id) {
-    res.status(400).json({ message: "text or user id are required" });
-  }
+  let {
+    params: { id },
+    body: { text, user_id },
+  } = req;
+
+  if (!text || !user_id)
+    return res.status(400).json({ message: "text or user id are required" });
 
   next();
-}
+};
 
 // do not forget to expose these functions to other modules
 
@@ -34,5 +36,5 @@ function validatePost(req, res, next) {
 module.exports = {
   validateUserId,
   validateUser,
-  validatePost
+  validatePost,
 };
