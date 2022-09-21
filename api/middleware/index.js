@@ -4,7 +4,7 @@ const validateUserId = async (req, res, next) => {
   let { id } = req.params;
   const user = await userdb.getById(id);
 
-  if (!user) return res.status(400).json({ message: "id is required" });
+  if (!user) return res.status(400).json({ message: "id is not exist" });
   req.user = user;
   next();
 };
@@ -19,6 +19,7 @@ const validateUser = async (req, res, next) => {
 
 const validatePost = (req, res, next) => {
   // DO YOUR MAGIC
+  console.log(req);
   let {
     params: { id },
     body: { text, user_id },
